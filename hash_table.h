@@ -85,7 +85,7 @@ private:
 
             for(size_t i = 1; i < size_; i++)
             {
-                insert(data_.key < temp->data_.key? left_: right_, temp);
+                insert(this, temp);
                 temp = temp->next_;
             }
             rebuilded = true;
@@ -138,7 +138,7 @@ public:
     Value& get(Key key) {
         int pos = hash(key);
 
-        if(!m_buff[pos])
+        if(m_buff[pos])
             return m_buff[pos]->get(key);
         else
             assert(false);
